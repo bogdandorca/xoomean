@@ -1,0 +1,24 @@
+{
+  "name": "xoomean",
+  "version": "1.0.0",
+  "authors": [
+    "Bogdan <bogdandorca@gmail.com>"
+  ],
+  "description": "Amazing hotel booking website",
+  "main": "index.js",
+  "keywords": [
+    "hotel",
+    "booking",
+    "expedia",
+    "ean",
+    "hotels"
+  ],
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

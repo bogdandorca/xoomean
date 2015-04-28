@@ -1,0 +1,26 @@
+{
+  "name": "xoomean",
+  "version": "1.0.0",
+  "description": "Amazing hotel booking website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bogdandorca/xoomean.git"
+  },
+  "keywords": [
+    "hotel",
+    "booking",
+    "expedia",
+    "ean",
+    "hotels"
+  ],
+  "author": "Bogdan Dorca",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/bogdandorca/xoomean/issues"
+  },
+  "homepage": "https://github.com/bogdandorca/xoomean"
+}
