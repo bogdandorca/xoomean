@@ -1,0 +1,30 @@
+.col-md-8
+    .card.search.col-md-12.col-sm-12.col-xs-12
+        .card-heading.col-md-12.col-sm-12.col-xs-12
+            h1 Search for hotels
+        .card-body.col-md-12.col-sm-12.col-xs-12
+            .form
+                .col-md-12.input-group
+                    input(type="text", placeholder="Destination", ng-model="destination", ng-change="autocomplete(destination)").form-control
+                    span.input-group-addon
+                        span.fa.fa-search
+                .autocomplete-panel(ng-hide="autocompelteListIsEmpty()")
+                    .autocomplete-item-heading Cities
+                    .autocomplete-item(ng-repeat="item in autocompleteList.cities track by $index", ng-click="selectDestination(item, 'city')") {{item.Name}}
+                    .autocomplete-item-heading Hotels
+                    .autocomplete-item(ng-repeat="item in autocompleteList.hotels track by $index", ng-click="selectDestination(item, 'hotel')") {{item.Name}}
+                    .autocomplete-item-heading Airports
+                    .autocomplete-item(ng-repeat="item in autocompleteList.airports track by $index", ng-click="selectDestination(item)") {{item.Name}}
+                .col-md-6.input-group
+                    input(type="text", placeholder="Check-in").form-control
+                    span.input-group-addon
+                        span.fa.fa-calendar-o
+                .col-md-6.input-group
+                    input(type="text", placeholder="Check-out").form-control
+                    span.input-group-addon
+                        span.fa.fa-calendar-o
+                .col-md-2.col-md-offset-10
+                    button(type="submit").btn.btn-main Search
+    include recommended
+.col-md-4
+    include sidebar

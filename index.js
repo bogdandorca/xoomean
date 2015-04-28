@@ -11,5 +11,16 @@ var msg = require('./server/repo/message-log');
 // Database connection
 require('./server/repo/database')(config, msg);
 
+// Models
+require('./server/models/autocomplete')();
+
+// Views
+require('./server/views/autocomplete')(app);
+
+// Callback
+app.get('*', function(req, res){
+    res.end();
+});
+
 app.listen(config[env].port);
 console.log(msg.success('Listening on ' + config[env].port));

@@ -2,7 +2,7 @@ angular.module('app', ['ngRoute']).config(function($routeProvider, $locationProv
     $locationProvider.html5Mode(true);
     $routeProvider
         .when('/', {
-            templateUrl: '/partials/search',
+            templateUrl: '/partials/index/search',
             controller: 'SearchCtrl'
         });
 });
