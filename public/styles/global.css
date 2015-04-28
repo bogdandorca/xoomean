@@ -52,6 +52,13 @@ body {
     cursor: pointer; }
     .search .autocomplete-panel .autocomplete-item:hover {
       background-color: #F9F9F6; }
+  .search .autocomplete-panel .autocomplete-category {
+    padding: 5px 10px;
+    cursor: default;
+    font-size: 1em;
+    color: #b4b2aa;
+    font-wight: bold;
+    border-bottom: 1px solid #f2f1ee; }
 
 .btn-main {
   background-color: #f87e47;

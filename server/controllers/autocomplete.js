@@ -34,10 +34,10 @@ module.exports = {
                 if(err){
                     res.send("Error");
                 } else {
-                    for(var i=0;i<5;i++){
+                    for(var i=0;i<results[1].length;i++){
                         results[0].push(results[1][i]);
                     }
-                    for(var i=0;i<5;i++){
+                    for(var i=0;i<results[2].length;i++){
                         results[0].push(results[2][i]);
                     }
                     res.send(results[0]);

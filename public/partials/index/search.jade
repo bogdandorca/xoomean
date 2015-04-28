@@ -9,11 +9,11 @@
                     span.input-group-addon
                         span.fa.fa-search
                 .autocomplete-panel(ng-hide="autocompelteListIsEmpty()")
-                    .autocomplete-item-heading Cities
+                    .autocomplete-category(ng-hide="citiesArrayIsEmpty()") Cities
                     .autocomplete-item(ng-repeat="item in autocompleteList.cities track by $index", ng-click="selectDestination(item, 'city')") {{item.Name}}
-                    .autocomplete-item-heading Hotels
+                    .autocomplete-category(ng-hide="hotelsArrayIsEmpty()") Hotels
                     .autocomplete-item(ng-repeat="item in autocompleteList.hotels track by $index", ng-click="selectDestination(item, 'hotel')") {{item.Name}}
-                    .autocomplete-item-heading Airports
+                    .autocomplete-category(ng-hide="airportsArrayIsEmpty()") Airports
                     .autocomplete-item(ng-repeat="item in autocompleteList.airports track by $index", ng-click="selectDestination(item)") {{item.Name}}
                 .col-md-6.input-group
                     input(type="text", placeholder="Check-in").form-control
