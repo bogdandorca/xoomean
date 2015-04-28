@@ -2,6 +2,14 @@ body {
   margin-top: 70px !important;
   font-size: 14px; }
 
+.navbar-collapse {
+  padding: 0 30px !important; }
+
+.navbar-header {
+  margin-right: 20px !important; }
+  .navbar-header .navbar-brand {
+    font-size: 1.5em !important; }
+
 .card {
   background-color: #fff;
   border: 1px solid;
@@ -41,6 +49,14 @@ body {
   border-color: #f87e47 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(248, 126, 71, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(248, 126, 71, 0.6) !important; }
+
+.btn:focus {
+  border-color: #ff854e !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  color: #fff;
+  background-color: #ff854e;
+  outline: none !important; }
 
 .recommendation-container .recommendation {
   margin-bottom: 10px; }

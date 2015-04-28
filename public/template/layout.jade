@@ -7,16 +7,12 @@ html
 
         link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet", href="vendor/fontawesome/css/font-awesome.css")
+        link(rel="stylesheet", href="vendor/toastr/toastr.css")
         link(rel="stylesheet", href="styles/global.css")
-    body
-        .navbar.navbar-default.navbar-fixed-top
-            .navbar-header
-                a(href="/").navbar-brand Xoomean
-            .collapse.navbar-collapse
-                ul.nav.navbar-nav.navbar-right
-                    li.active
-                        a(href="/") Hotels
-                    li
-                        a(href="/") Booking
-        .container
+
+        base(href="/")
+    body(ng-app="app")
+        include header
+        .container(ng-view)
             block main-block
+        include scripts
