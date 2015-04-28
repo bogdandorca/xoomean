@@ -1,0 +1,23 @@
+.card {
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 0;
+  .card-heading {
+    background-color: #f9f9f6;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 10px;
+    h1 {
+      font-size: 2em;
+      margin: 0;
+      padding: 0 15px;
+      color: #898989;
+    }
+  }
+  .card-body {
+    padding: 20px;
+  }
+}

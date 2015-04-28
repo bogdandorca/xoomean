@@ -1,0 +1,14 @@
+.btn-main {
+  background-color: #f87e47;
+  border-color: #ec7944;
+  color: #fff;
+  &:hover {
+    background-color: #ec7944;
+    color: #fff;
+  }
+}
+.form-control:focus {
+  border-color: #f87e47 !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(248, 126, 71,.6) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(248, 126, 71,.6) !important;
+}

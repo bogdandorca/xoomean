@@ -1,0 +1,66 @@
+extends template/layout
+block main-block
+    .col-md-8
+        .card.search.col-md-12.col-sm-12.col-xs-12
+            .card-heading.col-md-12.col-sm-12.col-xs-12
+                h1 Search for hotels
+            .card-body.col-md-12.col-sm-12.col-xs-12
+                .form
+                    .col-md-12.input-group
+                        input(type="text", placeholder="Destination").form-control
+                        span.input-group-addon
+                            span.fa.fa-search
+                    .col-md-6.input-group
+                        input(type="text", placeholder="Check-in").form-control
+                        span.input-group-addon
+                            span.fa.fa-calendar-o
+                    .col-md-6.input-group
+                        input(type="text", placeholder="Check-out").form-control
+                        span.input-group-addon
+                            span.fa.fa-calendar-o
+                    .col-md-2.col-md-offset-10
+                        button(type="submit").btn.btn-main Search
+        .col-md-12.col-sm-12.col-xs-12.card.recommendation-container
+            .card-heading.col-md-12.col-sm-12.col-xs-12
+                h1 Recommended destination
+            .card-body.col-md-12.col-sm-12.col-xs-12
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/london.jpg").img-responsive
+                    h2 London
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/paris.jpg").img-responsive
+                    h2 Paris
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/new_york.jpg").img-responsive
+                    h2 New York
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/moscow.jpg").img-responsive
+                    h2 Moscow
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/cluj_napoca.jpg").img-responsive
+                    h2 Cluj Napoca
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/las_vegas.jpg").img-responsive
+                    h2 Las Vegas
+                    p
+                        i Destination details
+                .col-md-4.col-sm-6.col-xs-12.recommendation
+                    img(src="/img/api/p/barcelona.jpg").img-responsive
+                    h2 Barcelona
+                    p
+                        i Destination details
+    .col-md-4
+        .card.col-md-12.col-sm-12.col-xs-12
+            .card-heading.col-md-12.col-sm-12.col-xs-12
+                h1 asd
+            .card-body.col-md-12.col-sm-12.col-xs-12

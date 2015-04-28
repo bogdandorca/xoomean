@@ -1,0 +1,21 @@
+.recommendation-container {
+  .recommendation {
+    margin-bottom: 10px;
+    img {
+      border-radius: 3px;
+      border: 1px solid;
+      border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+      color: #3b3b3b;
+      font-weight: bold;
+    }
+    p{
+      color: #b4b2aa;
+    }
+  }
+}
