@@ -1,6 +1,14 @@
 body {
   margin-top: 70px !important;
-  font-size: 14px; }
+  font-size: 14px;
+  background-image: url("/img/bkg2.jpg");
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed; }
 
 .navbar-collapse {
   padding: 0 30px !important; }
@@ -39,14 +47,15 @@ body {
   width: 100%; }
 .search .autocomplete-panel {
   position: absolute;
-  width: 85%;
+  width: 89%;
   margin-top: 33px;
   margin-left: 16px;
   z-index: 2000;
   background-color: #fff;
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-  -webkit-border-radius: 3px; }
+  -webkit-border-radius: 3px;
+  left: 1px; }
   .search .autocomplete-panel .autocomplete-item {
     padding: 5px 10px;
     cursor: pointer; }
@@ -96,5 +105,60 @@ body {
     font-weight: bold; }
   .recommendation-container .recommendation p {
     color: #b4b2aa; }
+
+.dropdown-menu {
+  background-color: #F87E47;
+  padding-top: 0 !important;
+  width: 80%; }
+  .dropdown-menu table {
+    width: 100%; }
+    .dropdown-menu table .datepicker-header {
+      background-color: #fff; }
+      .dropdown-menu table .datepicker-header th {
+        text-align: center;
+        width: 15.25%;
+        color: #a3a199 !important; }
+        .dropdown-menu table .datepicker-header th .btn {
+          border: none !important;
+          border-radius: 0 !important;
+          color: #a3a199 !important; }
+          .dropdown-menu table .datepicker-header th .btn:hover {
+            background-color: #fff !important; }
+          .dropdown-menu table .datepicker-header th .btn:focus {
+            background-color: #fff !important; }
+    .dropdown-menu table .week-days {
+      color: #db7344;
+      text-transform: uppercase;
+      line-height: 3em; }
+    .dropdown-menu table tbody {
+      color: #fff; }
+      .dropdown-menu table tbody tr td {
+        background-color: #F87E47;
+        padding: 0 !important;
+        width: 15.25%; }
+        .dropdown-menu table tbody tr td .btn {
+          border: none !important;
+          border-radius: 50% !important;
+          background-color: #F87E47 !important;
+          color: #fff !important;
+          opacity: 1 !important;
+          padding: 2px 4px !important;
+          height: 25px !important;
+          width: 25px !important;
+          font-weight: bold; }
+          .dropdown-menu table tbody tr td .btn.active {
+            background-color: #fff !important; }
+            .dropdown-menu table tbody tr td .btn.active span {
+              color: #f87e47 !important; }
+          .dropdown-menu table tbody tr td .btn .text-info {
+            color: #fff; }
+        .dropdown-menu table tbody tr td .text-muted {
+          color: #db7344; }
+      .dropdown-menu table tbody tr em {
+        display: none; }
+    .dropdown-menu table:focus {
+      box-shadow: none !important;
+      border: none !important;
+      outline: none !important; }
 
 /*# sourceMappingURL=global.css.map */

@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute']).config(function($routeProvider, $locationProvider){
+angular.module('app', ['ngRoute', 'ui.bootstrap']).config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
     $routeProvider
         .when('/', {

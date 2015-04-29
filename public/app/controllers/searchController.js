@@ -1,49 +1,67 @@
 angular.module('app').controller('SearchCtrl', ['$scope', '$http', function($scope, $http){
-    $scope.autocompleteList = {
-        cities: [],
-        hotels: [],
-        airports: []
+    // Check in
+    $scope.checkInToday = function() {
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        $scope.cidt = day+'/'+month+'/'+year;
     };
-    var resetAutocomplete = function(){
-        $scope.autocompleteList = {
-            cities: [],
-            hotels: [],
-            airports: []
-        }
+    $scope.checkInToday();
+
+    // Disable weekend selection
+    $scope.checkInDisabled = function(date, mode) {
+        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
     };
-    $scope.autocomplete = function(destination){
-        if(destination.length > 2){
-            $http.get('/api/autocomplete/'+destination)
-                .success(function(data){
-                    resetAutocomplete();
-                    for(var i=0;i<data.length;i++){
-                        if(data[i].Type === 'city'){
-                            $scope.autocompleteList.cities.push(data[i]);
-                        } else if(data[i].Type === 'hotel'){
-                            $scope.autocompleteList.hotels.push(data[i]);
-                        } else if(data[i].Type === 'airport'){
-                            $scope.autocompleteList.airports.push(data[i]);
-                        }
-                    }
-                });
-        } else {
-            resetAutocomplete();
-        }
+
+    $scope.checkInToggleMin = function() {
+        $scope.checkInMinDate = $scope.checkInMinDate ? null : new Date();
     };
-    $scope.autocompelteListIsEmpty = function(){
-        return ($scope.autocompleteList.cities.length === 0 && $scope.autocompleteList.hotels.length === 0 && $scope.autocompleteList.airports.length === 0);
+    $scope.checkInToggleMin();
+
+    $scope.checkInOpen = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.checkInOpened = true;
+        $scope.checkOutOpened = false;
     };
-    $scope.citiesArrayIsEmpty = function(){
-        return ($scope.autocompleteList.cities.length === 0);
+
+    // check out
+    $scope.checkOutToday = function() {
+        var date = new Date();
+        var day = date.getDate() + 2;
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        $scope.codt = day+'/'+month+'/'+year;
     };
-    $scope.hotelsArrayIsEmpty = function(){
-        return ($scope.autocompleteList.hotels.length === 0);
+    $scope.checkOutToday();
+
+    // Disable weekend selection
+    $scope.checkOutDisabled = function(date, mode) {
+        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
     };
-    $scope.airportsArrayIsEmpty = function(){
-        return ($scope.autocompleteList.airports.length === 0);
+
+    $scope.checkOutToggleMin = function() {
+        $scope.checkOutMinDate = $scope.checOutMinDate ? null : new Date();
     };
-    $scope.selectDestination = function(item, type){
-        $scope.destination = item.Name;
-        resetAutocomplete();
-    }
+    $scope.checkOutToggleMin();
+
+    $scope.checkOutOpen = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.checkOutOpened = true;
+        $scope.checkInOpened = false;
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd/MM/yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
 }]);
