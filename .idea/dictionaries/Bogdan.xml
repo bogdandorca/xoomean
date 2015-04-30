@@ -2,9 +2,13 @@
   <dictionary name="Bogdan">
     <words>
       <w>autocompelte</w>
+      <w>cidt</w>
+      <w>codt</w>
+      <w>datepicker</w>
       <w>dropdown</w>
       <w>navbar</w>
       <w>tpls</w>
+      <w>upsert</w>
       <w>yyyy</w>
     </words>
   </dictionary>

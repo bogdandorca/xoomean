@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 module.exports = {
     streamAutocompleteData: function(destination, type, callback){
         var dataArray = [];
-        var stream = Autocomplete.find({Name: {$regex: destination}, Type: type}).limit(5).stream();
+        var stream = Autocomplete.find({Name: {$regex: destination}, Type: type}).sort({Popularity: -1}).limit(5).stream();
         stream.on('data', function(data){
             dataArray.push(data);
         });

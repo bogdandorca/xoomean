@@ -1,4 +1,4 @@
-angular.module('app').directive('ngAutocomplete', function($document, $http){
+angular.module('app').directive('ngAutocomplete', function($document, $http, PopularDestinations){
     var linker = function(scope, element, attr){
         $document.click(function(){
             scope.$apply(scope.hideAutocomplete = true);
@@ -23,7 +23,7 @@ angular.module('app').directive('ngAutocomplete', function($document, $http){
 
         // Get autocomplete list
         $scope.autocomplete = function(destination){
-            if(destination.length > 2){
+            if(destination.length > 1){
                 $http.get('/api/autocomplete/'+destination)
                     .success(function(data){
                         resetAutocomplete();
@@ -67,6 +67,7 @@ angular.module('app').directive('ngAutocomplete', function($document, $http){
         // Autocomplete select
         $scope.selectDestination = function(item, type){
             $scope.destination = item.Name;
+            PopularDestinations.indentSelection(item.DestinationId);
             resetAutocomplete();
         }
     };

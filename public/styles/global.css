@@ -1,5 +1,6 @@
 body {
   margin-top: 70px !important;
+  font-family: 'Open Sans', sans-serif !important;
   font-size: 14px;
   background-image: url("/img/bkg2.jpg");
   background-size: cover;
@@ -29,12 +30,14 @@ body {
     background-color: #f9f9f6;
     padding: 10px 0;
     text-align: center;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-width: 1px; }
     .card .card-heading h1 {
       font-size: 2em;
       margin: 0;
       padding: 0 15px;
-      color: #898989; }
+      color: #3B3B3B; }
   .card .card-body {
     padding: 20px; }
 
@@ -82,6 +85,9 @@ body {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(248, 126, 71, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(248, 126, 71, 0.6) !important; }
 
+.form-control[readonly] {
+  background-color: #fff !important; }
+
 .btn:focus {
   border-color: #ff854e !important;
   -webkit-box-shadow: none !important;
@@ -105,6 +111,8 @@ body {
     font-weight: bold; }
   .recommendation-container .recommendation p {
     color: #b4b2aa; }
+.recommendation-container .recommendation-loader {
+  text-align: center; }
 
 .dropdown-menu {
   background-color: #F87E47;
@@ -129,7 +137,8 @@ body {
     .dropdown-menu table .week-days {
       color: #db7344;
       text-transform: uppercase;
-      line-height: 3em; }
+      line-height: 3em;
+      text-align: center; }
     .dropdown-menu table tbody {
       color: #fff; }
       .dropdown-menu table tbody tr td {
@@ -146,6 +155,10 @@ body {
           height: 25px !important;
           width: 25px !important;
           font-weight: bold; }
+          .dropdown-menu table tbody tr td .btn:hover {
+            background-color: #fff !important; }
+            .dropdown-menu table tbody tr td .btn:hover span {
+              color: #f87e47; }
           .dropdown-menu table tbody tr td .btn.active {
             background-color: #fff !important; }
             .dropdown-menu table tbody tr td .btn.active span {
@@ -153,7 +166,9 @@ body {
           .dropdown-menu table tbody tr td .btn .text-info {
             color: #fff; }
         .dropdown-menu table tbody tr td .text-muted {
-          color: #db7344; }
+          color: #fff; }
+        .dropdown-menu table tbody tr td .disabled-btn span {
+          color: #db7344 !important; }
       .dropdown-menu table tbody tr em {
         display: none; }
     .dropdown-menu table:focus {

@@ -16,6 +16,7 @@ require('./server/models/autocomplete')();
 
 // Views
 require('./server/views/autocomplete')(app);
+require('./server/views/popularDestinations')(app);
 
 // Callback
 app.get('*', function(req, res){

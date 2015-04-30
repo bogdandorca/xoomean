@@ -1,6 +1,12 @@
 .autocomplete-category(ng-hide="citiesArrayIsEmpty()") Cities
+    .pull-right
+        i.fa.fa-building-o
 .autocomplete-item(ng-repeat="item in autocompleteList.cities track by $index", ng-click="selectDestination(item, 'city')") {{item.Name}}
 .autocomplete-category(ng-hide="hotelsArrayIsEmpty()") Hotels
+    .pull-right
+        i.fa.fa-bed
 .autocomplete-item(ng-repeat="item in autocompleteList.hotels track by $index", ng-click="selectDestination(item, 'hotel')") {{item.Name}}
 .autocomplete-category(ng-hide="airportsArrayIsEmpty()") Airports
+    .pull-right
+        i.fa.fa-plane
 .autocomplete-item(ng-repeat="item in autocompleteList.airports track by $index", ng-click="selectDestination(item, 'airport')") {{item.Name}}
