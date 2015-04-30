@@ -9,7 +9,7 @@ require('./server/repo/environment')(app, express);
 // Message styling helper
 var msg = require('./server/repo/message-log');
 // Database connection
-require('./server/repo/database')(config, msg);
+require('./server/repo/database')(config, msg, env);
 
 // Models
 require('./server/models/autocomplete')();
