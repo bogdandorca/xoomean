@@ -19,6 +19,10 @@ module.exports = {
         Autocomplete.findOne({DestinationId: destinationId}).exec(function(err, data){
             if(!err && data !== null){
                 data.Selections += 1;
+                if(data.Selections >= 100){
+                    data.Popularity += 1;
+                    data.Selections = 0;
+                }
 
                 var destination = data.toObject();
                 delete destination['_id'];
