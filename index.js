@@ -1,6 +1,6 @@
 var express = require('express');
+var env = process.env.NODE_ENV || 'development';
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var app = express();
 var config = require('./server/repo/config');
 // Environment general set-up
