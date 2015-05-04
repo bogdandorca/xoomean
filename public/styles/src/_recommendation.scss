@@ -1,11 +1,13 @@
 .recommendation-container {
   .recommendation {
     margin-bottom: 10px;
+    cursor: pointer;
     img {
       border-radius: 3px;
       border: 1px solid;
       border-color: #e5e6e9 #dfe0e4 #d0d1d5;
       margin-bottom: 10px;
+      transition: all 0.3s;
     }
     h2 {
       margin: 0;
@@ -16,6 +18,14 @@
     }
     p{
       color: #b4b2aa;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+        -webkit-box-shadow: 0 5px 5px 0 rgba(184,180,184,1);
+        -moz-box-shadow: 0 5px 5px 0 rgba(184,180,184,1);
+        box-shadow: 0 5px 5px 0 rgba(184,180,184,1);
+      }
     }
   }
   .recommendation-loader {

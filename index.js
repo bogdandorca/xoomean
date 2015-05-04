@@ -22,7 +22,7 @@ require('./server/views/list')(app);
 
 // Callback
 app.get('*', function(req, res){
-    res.end();
+    res.render('index');
 });
 
 app.listen(config[env].port);

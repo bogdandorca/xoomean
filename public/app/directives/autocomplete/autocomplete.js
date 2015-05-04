@@ -67,6 +67,7 @@ angular.module('app').directive('ngAutocomplete', function($document, $http, Pop
         // Autocomplete select
         $scope.selectDestination = function(item, type){
             $scope.destination = item.Name;
+            $scope.selectedDestination = item;
             PopularDestinations.indentSelection(item.DestinationId);
             resetAutocomplete();
         }

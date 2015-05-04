@@ -2,7 +2,7 @@
     .card-heading.col-md-12.col-sm-12.col-xs-12
         h1 Recommended destinations
     .card-body.col-md-12.col-sm-12.col-xs-12
-        .col-md-4.col-sm-6.col-xs-12.recommendation(ng-repeat="destination in popularDestinations")
+        .recommendation.col-md-4.col-sm-6.col-xs-12(ng-repeat="destination in popularDestinations", ng-click="searchHotels(destination, defaultCheckIn, defaultCheckOut)")
             img(ng-src="/img/api/p/{{destination.DestinationId}}.jpg").img-responsive
             h2 {{destination.Name}}
             p

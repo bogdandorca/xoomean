@@ -18,7 +18,7 @@
                     span.input-group-addon
                         span.fa.fa-calendar-o
                 .col-md-2.col-md-offset-10
-                    button(type="submit").btn.btn-main Search
+                    button(type="submit", ng-click="searchHotels(selectedDestination, cidt, codt)").btn.btn-main Search
     include recommended
 .col-md-4
     include sidebar

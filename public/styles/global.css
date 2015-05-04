@@ -97,12 +97,14 @@ body {
   outline: none !important; }
 
 .recommendation-container .recommendation {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  cursor: pointer; }
   .recommendation-container .recommendation img {
     border-radius: 3px;
     border: 1px solid;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    transition: all 0.3s; }
   .recommendation-container .recommendation h2 {
     margin: 0;
     padding: 0;
@@ -111,6 +113,11 @@ body {
     font-weight: bold; }
   .recommendation-container .recommendation p {
     color: #b4b2aa; }
+  .recommendation-container .recommendation:hover img {
+    transform: scale(1.1);
+    -webkit-box-shadow: 0 5px 5px 0 #b8b4b8;
+    -moz-box-shadow: 0 5px 5px 0 #b8b4b8;
+    box-shadow: 0 5px 5px 0 #b8b4b8; }
 .recommendation-container .recommendation-loader {
   text-align: center; }
 
