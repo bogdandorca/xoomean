@@ -176,4 +176,16 @@ body {
       border: none !important;
       outline: none !important; }
 
+.hotel {
+  height: 100px;
+  width: 100%;
+  padding: 10px !important; }
+  .hotel img {
+    width: 100%; }
+  .hotel .hotel-details {
+    padding-left: 0; }
+    .hotel .hotel-details h2 {
+      font-size: 1.8em;
+      margin: 0; }
+
 /*# sourceMappingURL=global.css.map */

@@ -13,10 +13,12 @@ require('./server/repo/database')(config, msg, env);
 
 // Models
 require('./server/models/autocomplete')();
+require('./server/models/hotel')();
 
 // Views
 require('./server/views/autocomplete')(app);
 require('./server/views/popularDestinations')(app);
+require('./server/views/list')(app);
 
 // Callback
 app.get('*', function(req, res){

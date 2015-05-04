@@ -23,7 +23,7 @@ angular.module('app').directive('ngAutocomplete', function($document, $http, Pop
 
         // Get autocomplete list
         $scope.autocomplete = function(destination){
-            if(destination.length > 1){
+            if(destination.length > 2){
                 $http.get('/api/autocomplete/'+destination)
                     .success(function(data){
                         resetAutocomplete();

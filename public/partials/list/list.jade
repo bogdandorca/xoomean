@@ -1,0 +1,19 @@
+.col-md-8
+    .card.col-md-12
+        .card-heading.col-md-12.col-sm-12.col-xs-12
+            h1 Available hotels
+        .card-body.col-md-12.col-sm-12.col-xs-12
+            .col-md-12.hotel(ng-repeat="hotel in hotelList")
+                .col-md-2
+                    img(ng-src="http://images.travelnow.com{{hotel.thumbNailUrl}}").img-responsive
+                .hotel-details.col-md-9
+                    h2(ng-bind-html="hotel.name | unsafe")
+                    p
+                        i(ng-bind-html="hotel.city | unsafe") ,
+                        i(ng-bind-html="hotel.locationDescription | unsafe")
+                .star-rating.col-md-1
+                    h1 {{hotel.hotelRating}}
+            .col-md-12.col-sm-12.col-xs-12.recommendation-loader(ng-show="hotelList.length==0")
+                i.fa.fa-spinner.fa-3x.fa-spin
+.col-md-4
+    include sidebar
