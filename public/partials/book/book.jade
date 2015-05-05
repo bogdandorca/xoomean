@@ -1,0 +1,53 @@
+.col-md-8
+    .card.col-md-12.col-sm-12.col-xs-12
+        .card-heading.col-md-12.col-sm-12.col-xs-12
+            h1 Book
+        .card-body.col-md-12.col-sm-12.col-xs-12
+            form.form
+                .form-group.col-md-6
+                    label(for="first-name") First Name
+                    input(type="text", id="first-name", placeholder="First Name", ng-model="booking.firstName").form-control
+                .form-group.col-md-6
+                    label(for="last-name") Last Name
+                    input(type="text", id="last-name", placeholder="Last Name", ng-model="booking.lastName").form-control
+                .form-group.col-md-6
+                    label(for="email") Email Address
+                    input(type="text", id="email", placeholder="Email Address", ng-model="booking.email").form-control
+                .form-group.col-md-6
+                    label(for="phone") Phone Number
+                    input(type="text", id="phone", placeholder="Phone Number", ng-model="booking.phone").form-control
+                .form-group.col-md-12
+                    label(for="card-number") Credit Card Number
+                    input(type="text", id="card-number", placeholder="Card Number", ng-model="booking.cardNumber").form-control
+                .form-group.col-md-4
+                    label(for="card-cvv") CVV
+                    input(type="text", id="card-cvv", placeholder="CVV", ng-model="booking.cardCvv").form-control
+                .form-group.col-md-4
+                    label(for="card-month") Expiration Month
+                    input(type="text", id="card-month", placeholder="Month", ng-model="booking.cardMonth").form-control
+                .form-group.col-md-4
+                    label(for="card-year") Expiration Year
+                    input(type="text", id="card-year", placeholder="Year", ng-model="booking.cardYear").form-control
+                .form-group.col-md-6
+                    label(for="card-first-name") First Name
+                    input(type="text", id="card-first-name", placeholder="First Name", ng-model="booking.cardFirstName").form-control
+                .form-group.col-md-6
+                    label(for="card-last-name") Last Name
+                    input(type="text", id="card-last-name", placeholder="Last Name", ng-model="booking.cardLastName").form-control
+                .form-group.col-md-6
+                    label(for="address") Address
+                    input(type="text", id="address", placeholder="Address", ng-model="booking.address").form-control
+                .form-group.col-md-6
+                    label(for="city") City
+                    input(type="text", id="city", placeholder="City", ng-model="booking.city").form-control
+                .form-group.col-md-6
+                    label(for="state") State/Province
+                    input(type="text", id="state", placeholder="State/Province", ng-model="booking.province").form-control
+                .form-group.col-md-6
+                    label(for="country") Country
+                    input(type="text", id="country", placeholder="Country", ng-model="booking.country").form-control
+                .form-group.col-md-6
+                    label(for="postal-code") Postal Code
+                    input(type="text", id="postal-code", placeholder="Postal Code", ng-model="booking.postalCode").form-control
+                .col-md-4.col-md-offset-4
+                    .btn.btn-main.col-md-12(ng-click="book(booking)") Book

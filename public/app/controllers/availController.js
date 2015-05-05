@@ -1,4 +1,4 @@
-angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $http){
+angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $http, $location){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
@@ -53,5 +53,14 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
                 return '<i class="fa fa-money"></i> ' + valueAdd;
             }
         }
+    };
+
+    $scope.selectRoom = function(room){
+        var rateKey = room.RateInfos.RateInfo.RoomGroup.Room.rateKey;
+        var roomTypeCode = room.roomTypeCode;
+        var rateCode = room.rateCode;
+        var chargeableRate = encodeURIComponent(room.RateInfos.RateInfo.ChargeableRateInfo['@total']);
+
+        $location.path('/book/'+hotelId+'/'+checkIn+'/'+checkOut+'/'+rateKey+'/'+roomTypeCode+'/'+rateCode+'/'+chargeableRate);
     };
 });

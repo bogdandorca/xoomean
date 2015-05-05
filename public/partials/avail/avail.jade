@@ -23,3 +23,5 @@
                             li(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
                                 p {{valueAdd.description}}
                     .col-md-12 {{room.RateInfos.RateInfo.cancellationPolicy}}
+                    .col-md-12
+                        .btn.btn-main(ng-click="selectRoom(room)") Select

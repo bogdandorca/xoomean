@@ -16,7 +16,7 @@ module.exports = {
         });
     },
     getHotelDetails: function(hotelId, res){
-        var availRequest = this.formatDetailsRequest(hotelId);
-        this.sendEanRequest(availRequest, res);
+        var detailsRequest = this.formatDetailsRequest(hotelId);
+        this.sendEanRequest(detailsRequest, res);
     }
 };

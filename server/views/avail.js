@@ -2,6 +2,7 @@ var availController = require('../controllers/avail');
 
 module.exports = function(app){
     app.get('/api/avail/:hotelId/:checkIn/:checkOut', function(req, res){
+        // TODO: set as global
         String.prototype.standardizeDate = function(){
             var dateArr = this.split('-');
             return dateArr[1]+'/'+dateArr[0]+'/'+dateArr[2];
