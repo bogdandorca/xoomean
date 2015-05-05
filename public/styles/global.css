@@ -200,7 +200,8 @@ body {
 
 .carousel-inner .item {
   max-height: 450px;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 0.3s; }
   .carousel-inner .item img {
     width: 100%; }
 

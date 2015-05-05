@@ -12,3 +12,8 @@
                 i.fa.fa-spinner.fa-3x.fa-spin
 .col-md-4
     .card.col-md-12
+        .card-heading.col-md-12.col-sm-12.col-xs-12
+            h1 Rooms
+        .card-body.col-md-12.col-sm-12.col-xs-12
+            accordion(close-others="oneAtATime")
+                accordion-group(heading="{{room.roomTypeDescription}}", ng-repeat="room in rooms") some random content

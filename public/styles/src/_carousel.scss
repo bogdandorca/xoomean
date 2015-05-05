@@ -2,6 +2,7 @@
   .item {
     max-height: 450px;
     overflow: hidden;
+    transition: all 0.3s;
     img {
       width: 100%;
     }
