@@ -13,7 +13,7 @@
                         i(ng-bind-html="hotel.locationDescription | unsafe")
                 .star-rating.col-md-1
                     h1 {{hotel.hotelRating}}
-            .col-md-12.col-sm-12.col-xs-12.recommendation-loader(ng-show="hotelList.length==0")
+            .loader.col-md-12.col-sm-12.col-xs-12(ng-show="hotelList.length==0")
                 i.fa.fa-spinner.fa-3x.fa-spin
 .col-md-4
     include sidebar

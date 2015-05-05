@@ -1,8 +1,14 @@
 .col-md-8
     .card.col-md-12
         .card-heading.col-md-12
-            h1 Hotel Availability
+            h1 {{hotelName}}
         .card-body.col-md-12
-            p Hello world!
+            .hotel-image-carousel
+                carousel(interval="0")
+                    slide(ng-repeat="image in hotelImages")
+                        img(ng-src="{{imageTranslator(image.url)}}")
+            .col-md-12.col-sm-12.col-xs-12(ng-hide="rooms.length === 0", ng-bind-html="checkInInstructions | unsafe")
+            .loader.col-md-12.col-sm-12.col-xs-12(ng-show="rooms.length === 0")
+                i.fa.fa-spinner.fa-3x.fa-spin
 .col-md-4
     .card.col-md-12

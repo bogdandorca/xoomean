@@ -1,0 +1,15 @@
+.carousel-inner {
+  .item {
+    max-height: 450px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}
+.carousel-control {
+  cursor: pointer;
+}
+.carousel-indicators {
+  display: none;
+}

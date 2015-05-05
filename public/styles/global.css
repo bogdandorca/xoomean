@@ -40,6 +40,8 @@ body {
       color: #3B3B3B; }
   .card .card-body {
     padding: 20px; }
+    .card .card-body .loader {
+      text-align: center; }
 
 .search .input-group {
   float: left !important;
@@ -195,5 +197,17 @@ body {
     .hotel .hotel-details h2 {
       font-size: 1.8em;
       margin: 0; }
+
+.carousel-inner .item {
+  max-height: 450px;
+  overflow: hidden; }
+  .carousel-inner .item img {
+    width: 100%; }
+
+.carousel-control {
+  cursor: pointer; }
+
+.carousel-indicators {
+  display: none; }
 
 /*# sourceMappingURL=global.css.map */

@@ -20,6 +20,7 @@ require('./server/views/autocomplete')(app);
 require('./server/views/popularDestinations')(app);
 require('./server/views/list')(app);
 require('./server/views/avail')(app);
+require('./server/views/hotelDetails')(app);
 
 // Callback
 app.get('*', function(req, res){
