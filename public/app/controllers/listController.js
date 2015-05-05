@@ -1,4 +1,4 @@
-angular.module('app').controller('ListCtrl', function($scope, $sce, $http, $routeParams){
+angular.module('app').controller('ListCtrl', function($scope, $sce, $http, $routeParams, $location){
     $scope.renderHtmlElement = function(text){
         return $sce.trustAsHtml(text);
     };
@@ -15,4 +15,7 @@ angular.module('app').controller('ListCtrl', function($scope, $sce, $http, $rout
                 $scope.hotelList = data.HotelListResponse.HotelList.HotelSummary;
             }
         });
+    $scope.hotelSelect = function(hotelId){
+        $location.path('/avail/'+hotelId+'/'+checkIn+'/'+checkOut);
+    };
 });

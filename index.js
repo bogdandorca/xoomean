@@ -19,6 +19,7 @@ require('./server/models/hotel')();
 require('./server/views/autocomplete')(app);
 require('./server/views/popularDestinations')(app);
 require('./server/views/list')(app);
+require('./server/views/avail')(app);
 
 // Callback
 app.get('*', function(req, res){

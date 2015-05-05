@@ -186,7 +186,8 @@ body {
 .hotel {
   height: 100px;
   width: 100%;
-  padding: 10px !important; }
+  padding: 10px !important;
+  cursor: pointer; }
   .hotel img {
     width: 100%; }
   .hotel .hotel-details {

@@ -3,7 +3,7 @@
         .card-heading.col-md-12.col-sm-12.col-xs-12
             h1 Available hotels
         .card-body.col-md-12.col-sm-12.col-xs-12
-            .col-md-12.hotel(ng-repeat="hotel in hotelList")
+            .hotel.col-md-12(ng-repeat="hotel in hotelList", ng-click="hotelSelect(hotel.hotelId)")
                 .col-md-2
                     img(ng-src="http://images.travelnow.com{{hotel.thumbNailUrl}}").img-responsive
                 .hotel-details.col-md-9

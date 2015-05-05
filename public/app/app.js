@@ -9,6 +9,10 @@ angular.module('app', ['ngRoute', 'ui.bootstrap']).config(function($routeProvide
             templateUrl: '/partials/list/list',
             controller: 'ListCtrl'
         })
+        .when('/avail/:hotelId/:checkIn/:checkOut', {
+            templateUrl: '/partials/avail/avail',
+            controller: 'AvailCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
