@@ -1,4 +1,4 @@
-.col-md-8
+.col-md-6
     .card.col-md-12
         .card-heading.col-md-12
             h1 {{hotelName}}
@@ -6,14 +6,20 @@
             .hotel-image-carousel
                 carousel(interval="0")
                     slide(ng-repeat="image in hotelImages")
-                        img(ng-src="{{imageTranslator(image.url)}}")
+                        img(ng-src="{{image.url}}")
             .col-md-12.col-sm-12.col-xs-12(ng-hide="rooms.length === 0", ng-bind-html="checkInInstructions | unsafe")
             .loader.col-md-12.col-sm-12.col-xs-12(ng-show="rooms.length === 0")
                 i.fa.fa-spinner.fa-3x.fa-spin
-.col-md-4
+.col-md-6
     .card.col-md-12
         .card-heading.col-md-12.col-sm-12.col-xs-12
             h1 Rooms
         .card-body.col-md-12.col-sm-12.col-xs-12
             accordion(close-others="oneAtATime")
-                accordion-group(heading="{{room.roomTypeDescription}}", ng-repeat="room in rooms") some random content
+                accordion-group(heading="{{room.roomTypeDescription}}", ng-repeat="room in rooms")
+                    img(ng-src="{{room.RoomImages.RoomImage.url}}").col-md-6
+                    .col-md-6
+                        ul.col-md-12
+                            li(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
+                                p {{valueAdd.description}}
+                    .col-md-12 {{room.RateInfos.RateInfo.cancellationPolicy}}

@@ -11,6 +11,7 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
     $scope.rooms = [];
     $scope.hotelName = 'Hotel Details';
     $scope.checkInInstructions = '';
+    $scope.valueAdds = [];
     $http.get('/api/avail/'+hotelId+'/'+checkIn+'/'+checkOut)
         .success(function(data){
             data = data.HotelRoomAvailabilityResponse;
@@ -27,7 +28,7 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
             $scope.hotelImages = data.HotelImages.HotelImage;
         });
 
-    // Slider
+    // Sidebar
     $scope.oneAtATime = true;
     $scope.items = ['Item 1', 'Item 2', 'Item 3'];
     $scope.addItem = function() {
@@ -37,5 +38,20 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
     $scope.status = {
         isFirstOpen: true,
         isFirstDisabled: false
+    };
+
+    // Value Adds
+    $scope.valueAddIconGenerator = function(valueAdd){
+        if(valueAdd !== undefined) {
+            if (valueAdd.indexOf('Breakfast') > -1) {
+                return '<i class="fa fa-cutlery"></i> ' + valueAdd;
+            } else if (valueAdd.indexOf('Wireless') > -1 || valueAdd.indexOf('Internet') > -1) {
+                return '<i class="fa fa-wifi"></i> ' + valueAdd;
+            } else if (valueAdd.indexOf('Parking') > -1) {
+                return '<i class="fa fa-car"></i> ' + valueAdd;
+            } else {
+                return '<i class="fa fa-money"></i> ' + valueAdd;
+            }
+        }
     };
 });
