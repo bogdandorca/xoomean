@@ -22,6 +22,7 @@ require('./server/views/list')(app);
 require('./server/views/avail')(app);
 require('./server/views/hotelDetails')(app);
 require('./server/views/book')(app);
+require('./server/views/itinerary')(app);
 
 // Callback
 app.get('*', function(req, res){

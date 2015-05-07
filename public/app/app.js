@@ -17,6 +17,10 @@ angular.module('app', ['ngRoute', 'ui.bootstrap']).config(function($routeProvide
             templateUrl: 'partials/book/book',
             controller: 'BookCtrl'
         })
+        .when('/confirmation/:itineraryId/:email', {
+            templateUrl: 'partials/confirmation/confirmation',
+            controller: 'ConfirmationCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

@@ -1,4 +1,4 @@
-angular.module('app').controller('BookCtrl', function($scope, $http, $routeParams){
+angular.module('app').controller('BookCtrl', function($scope, $http, $routeParams, $location){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
@@ -47,7 +47,9 @@ angular.module('app').controller('BookCtrl', function($scope, $http, $routeParam
             }
         })
             .success(function(data){
-                console.log(data);
+                data = data.HotelRoomReservationResponse;
+                var itineraryId = data.itineraryId;
+                $location.path('/confirmation/'+itineraryId+'/'+$scope.booking.email);
             })
             .error(function(err){
                 // TODO: error catch

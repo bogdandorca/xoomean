@@ -10,11 +10,11 @@
                         span.fa.fa-search
                     .autocomplete-panel(ng-hide="autocompleteIsHidden()", ng-autocomplete)
                 .col-md-6.input-group
-                    input(type="text", placeholder="Check-in", show-button-bar="false", datepicker-popup="{{format}}", ng-model="cidt", is-open="checkInOpened", min-date="checkInMinDate", max-date="checkInMaxDate", datepicker-options="dateOptions", ng-required="true", ng-click="checkInOpen($event)", readonly="true").form-control
+                    input(type="text", placeholder="Check-in", show-button-bar="false", datepicker-popup="{{format}}", ng-model="cidt", is-open="checkInOpened", min-date="checkInMinDate", max-date="checkInMaxDate", datepicker-options="dateOptions", ng-required="true", ng-click="datepickerOpen($event, 'checkIn')", readonly="true").form-control
                     span.input-group-addon
                         span.fa.fa-calendar-o
                 .col-md-6.input-group
-                    input(type="text", placeholder="Check-out", show-button-bar="false", datepicker-popup="{{format}}", ng-model="codt", is-open="checkOutOpened", min-date="checkOutMinDate", max-date="checkOutMaxDate", datepicker-options="dateOptions", ng-required="true", ng-click="checkOutOpen($event)", readonly="true").form-control
+                    input(type="text", placeholder="Check-out", show-button-bar="false", datepicker-popup="{{format}}", ng-model="codt", is-open="checkOutOpened", min-date="checkOutMinDate", max-date="checkOutMaxDate", datepicker-options="dateOptions", ng-required="true", ng-click="datepickerOpen($event, 'checkOut')", readonly="true").form-control
                     span.input-group-addon
                         span.fa.fa-calendar-o
                 .col-md-2.col-md-offset-10

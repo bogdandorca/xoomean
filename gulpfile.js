@@ -8,10 +8,12 @@ var gulp = require('gulp'),
     ignore = require('gulp-ignore'),
     rimraf = require('gulp-rimraf'),
     merge = require('merge-stream'),
-    karma = require('gulp-karma');
+    karma = require('karma').server;
 
 // Environment
 var styles = './public/styles';
+
+// Development
 gulp.task('css-development', function(){
     return gulp.src(styles+'/**/*.scss')
         .pipe(sass())
@@ -25,7 +27,14 @@ gulp.task('css-development', function(){
         .pipe(concat('global.css'))
         .pipe(gulp.dest(styles+'/'));
 });
+gulp.task('js-development', function(){
 
+});
+
+// Production
+
+
+// Runners
 gulp.task('run', function(){
     nodemon({
         script: 'index.js',
@@ -34,9 +43,12 @@ gulp.task('run', function(){
     });
     gulp.watch(styles+'/**/*.scss', ['css-development']);
 });
-gulp.task('test', function(){
+gulp.task('test', function(done){
     karma.start({
-        configFile: 'karma.conf.js',
-        singleRun: true
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true,
+        action: 'run'
+    }, function(){
+        done();
     });
 });
