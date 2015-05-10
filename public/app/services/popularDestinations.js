@@ -1,4 +1,4 @@
-angular.module('app').factory('PopularDestinations', function($http, $q){
+angular.module('app').factory('PopularDestinations', ['$http', '$q', function($http, $q){
     return {
         getPopularDestinations: function(){
             var deferred = $q.defer();
@@ -12,4 +12,4 @@ angular.module('app').factory('PopularDestinations', function($http, $q){
             $http.post('/api/popular/'+destinationId, {});
         }
     }
-});
+}]);

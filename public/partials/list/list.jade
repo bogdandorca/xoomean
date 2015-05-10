@@ -1,19 +1,30 @@
-.col-md-8
-    .card.col-md-12
-        .card-heading.col-md-12.col-sm-12.col-xs-12
-            h1 Available hotels
-        .card-body.col-md-12.col-sm-12.col-xs-12
-            .hotel.col-md-12(ng-repeat="hotel in hotelList", ng-click="hotelSelect(hotel.hotelId)")
-                .col-md-2
-                    img(ng-src="http://images.travelnow.com{{hotel.thumbNailUrl}}").img-responsive
-                .hotel-details.col-md-9
-                    h2(ng-bind-html="hotel.name | unsafe")
-                    p
-                        i(ng-bind-html="hotel.city | unsafe") ,
-                        i(ng-bind-html="hotel.locationDescription | unsafe")
-                .star-rating.col-md-1
-                    h1 {{hotel.hotelRating}}
-            .loader.col-md-12.col-sm-12.col-xs-12(ng-show="hotelList.length==0")
-                i.fa.fa-spinner.fa-3x.fa-spin
-.col-md-4
-    include sidebar
+.full-page-loader(ng-show="hotelList.length==0")
+    .full-page-loading-text
+        p Looking for the best rates
+        i.fa.fa-circle-o-notch.fa-4x.fa-spin
+.filters-outer
+    .filters.col-md-12.col-sm-12.col-xs-12
+        include sidebar
+.col-md-12
+    .outer-hotel.col-md-3.col-sm-4.col-xs-12(ng-repeat="hotel in hotelList", ng-animate="'hotel'")
+        .card.col-md-12.col-sm-12.col-xs-12
+            .card-heading.col-md-12.col-sm-12.col-xs-12
+                h3(ng-bind-html="hotel.name | unsafe")
+            .card-body.col-md-12.col-sm-12.col-xs-12
+                .hotel.col-md-12
+                    .hotel-image.col-md-12
+                        img(ng-src="http://images.travelnow.com{{translate(hotel.thumbNailUrl)}}").img-responsive
+                    .hotel-details.col-md-12
+                        p
+                            i(ng-bind-html="hotel.city | unsafe")
+                            i ,
+                            i(ng-bind-html="hotel.locationDescription | unsafe")
+                    .price.col-xs-6
+                        p Starting from
+                        h3 ${{hotel.lowRate}}
+                    .star-rating.col-xs-6
+                        ng-star-rating(stars="{{hotel.hotelRating}}")
+                    .select-btn.col-xs-12
+                        button.btn.btn-main(ng-click="hotelSelect(hotel.hotelId)") Select
+                .loader.col-md-12.col-sm-12.col-xs-12(ng-show="hotelList.length==0")
+                    i.fa.fa-spinner.fa-3x.fa-spin

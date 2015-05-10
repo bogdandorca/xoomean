@@ -1,31 +1,65 @@
-angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $http, $location){
+angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http', '$location', 'ValueAdds', 'EanImage', '$timeout', function($scope, $routeParams, $http, $location, ValueAdds, EanImage, $timeout){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
-
-    $scope.imageTranslator = function(url){
-        var newImage = url.replace('_b.jpg', '_y.jpg');
-        return newImage;
-    };
 
     $scope.rooms = [];
     $scope.hotelName = 'Hotel Details';
     $scope.checkInInstructions = '';
     $scope.valueAdds = [];
+    $scope.translate = function(imageUrl){
+        return EanImage.translate(imageUrl, 'b', 't');
+    };
+    $scope.map = {
+        show: false,
+        refresh: function(){
+            $scope.map.show = false;
+            $timeout(function () {
+                $scope.map.show = true;
+            });
+        },
+        center: {
+            latitude: 0,
+            longitude: 0
+        },
+        zoom: 12,
+        marker: {
+            id: 1,
+            coords: {
+                latitude: 0,
+                longitude: 0
+            },
+            showWindow: true
+        },
+        setCoordinates: function(lat, long){
+            this.center.latitude = lat;
+            this.center.longitude = long;
+            this.marker.coords.latitude = lat;
+            this.marker.coords.longitude = long;
+        }
+    };
     $http.get('/api/avail/'+hotelId+'/'+checkIn+'/'+checkOut)
         .success(function(data){
+            console.log(data);
             data = data.HotelRoomAvailabilityResponse;
             $scope.hotelName = data.hotelName + ', ' + data.hotelCity + ', '+data.hotelCountry;
             $scope.rooms = data.HotelRoomResponse;
             $scope.checkInInstructions = data.checkInInstructions;
-            console.log(data);
         });
 
     $scope.hotelImages = [];
+    $scope.selectedHotelImage = '';
+    $scope.changeHotelImage = function(imageIndex){
+        $scope.selectedHotelImage = $scope.hotelImages[imageIndex].url;
+    };
     $http.get('/api/hotel/information/'+hotelId)
         .success(function(data){
+            console.log(data);
             data = data.HotelInformationResponse;
             $scope.hotelImages = data.HotelImages.HotelImage;
+            $scope.selectedHotelImage = $scope.hotelImages[0].url;
+            $scope.propertyDescription = data.HotelDetails.propertyDescription;
+            $scope.map.setCoordinates(data.HotelSummary.latitude, data.HotelSummary.longitude);
         });
 
     // Sidebar
@@ -42,17 +76,7 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
 
     // Value Adds
     $scope.valueAddIconGenerator = function(valueAdd){
-        if(valueAdd !== undefined) {
-            if (valueAdd.indexOf('Breakfast') > -1) {
-                return '<i class="fa fa-cutlery"></i> ' + valueAdd;
-            } else if (valueAdd.indexOf('Wireless') > -1 || valueAdd.indexOf('Internet') > -1) {
-                return '<i class="fa fa-wifi"></i> ' + valueAdd;
-            } else if (valueAdd.indexOf('Parking') > -1) {
-                return '<i class="fa fa-car"></i> ' + valueAdd;
-            } else {
-                return '<i class="fa fa-money"></i> ' + valueAdd;
-            }
-        }
+        return ValueAdds.generateIcon(valueAdd);
     };
 
     $scope.selectRoom = function(room){
@@ -63,4 +87,4 @@ angular.module('app').controller('AvailCtrl', function($scope, $routeParams, $ht
 
         $location.path('/book/'+hotelId+'/'+checkIn+'/'+checkOut+'/'+rateKey+'/'+roomTypeCode+'/'+rateCode+'/'+chargeableRate);
     };
-});
+}]);

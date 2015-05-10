@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
 
 module.exports = {
     formatHoteListRequest: function(hotelList, checkIn, checkOut){
-        var baseUrl = ' http://api.ean.com/ean-services/rs/hotel/v3/list?cid=55505&minorRev=99&apiKey=cbrzfta369qwyrm9t5b8y8kf&locale=en_US&currencyCode=USD';
+        var baseUrl = ' http://api.ean.com/ean-services/rs/hotel/v3/list?cid=55505&minorRev=99&apiKey=kjfeed6zwcy2k4ag24v9ugp5&locale=en_US&currencyCode=USD';
         baseUrl += '&hotelIdList='+encodeURIComponent(hotelList);
         baseUrl += '&arrivalDate='+encodeURIComponent(checkIn)+'&departureDate='+encodeURIComponent(checkOut);
-        baseUrl += '&numberOfResults=25&&room1=2';
+        baseUrl += '&numberOfResults=24&&room1=2';
 
         return baseUrl;
     },
@@ -28,7 +28,7 @@ module.exports = {
     getHotelsByDestination: function(destinationId, checkIn, checkOut, res){
         var hotelIdList = [];
         var parent = this;
-        var stream = Hotel.find({RegionID: destinationId}).limit(25).stream();
+        var stream = Hotel.find({RegionID: destinationId}).limit(100).stream();
         stream.on('data', function(data){
             hotelIdList.push(data.EANHotelID);
         });
@@ -41,10 +41,33 @@ module.exports = {
         });
     },
     getHotelsById: function(hotelId, checkIn, checkOut, res){
-
-
+        var hotelIdList = [];
+        var parent = this;
+        var stream = Hotel.find({EANHotelID: hotelId}).stream();
+        stream.on('data', function(data){
+            hotelIdList.push(data.EANHotelID);
+        });
+        stream.on('error', function(err){
+            console.log('Error: ' + err);
+        });
+        stream.on('close', function(){
+            var hotelsList = hotelIdList.join(',');
+            parent.getHotelAvailability(hotelsList, checkIn, checkOut, res);
+        });
     },
     getHotelsByAirport: function(airportCode, checkIn, checkOut, res){
-
+        var hotelIdList = [];
+        var parent = this;
+        var stream = Hotel.find({AirportCode: airportCode}).limit(100).stream();
+        stream.on('data', function(data){
+            hotelIdList.push(data.EANHotelID);
+        });
+        stream.on('error', function(err){
+            console.log('Error: ' + err);
+        });
+        stream.on('close', function(){
+            var hotelsList = hotelIdList.join(',');
+            parent.getHotelAvailability(hotelsList, checkIn, checkOut, res);
+        });
     }
 };

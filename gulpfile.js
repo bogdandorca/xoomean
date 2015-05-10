@@ -6,15 +6,23 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
     ignore = require('gulp-ignore'),
-    rimraf = require('gulp-rimraf'),
+    del = require('del'),
     merge = require('merge-stream'),
-    karma = require('karma').server;
+    karma = require('karma').server,
+    taskListing = require('gulp-task-listing'),
+    git = require('gulp-git'),
+    requireDir = require('require-dir');
 
 // Environment
 var styles = './public/styles';
+var vendor = './public/vendor';
+
+gulp.task('help', taskListing);
 
 // Development
 gulp.task('css-development', function(){
+    del([styles+'/global.css']);
+    del([styles+'/global.min.css']);
     return gulp.src(styles+'/**/*.scss')
         .pipe(sass())
         .pipe(sourcemaps.init())
@@ -23,7 +31,6 @@ gulp.task('css-development', function(){
             cascade: true
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(minifyCss())
         .pipe(concat('global.css'))
         .pipe(gulp.dest(styles+'/'));
 });
@@ -32,7 +39,21 @@ gulp.task('js-development', function(){
 });
 
 // Production
-
+gulp.task('css-production', function(){
+    del([styles+'/global.css']);
+    del([styles+'/global.min.css']);
+    return gulp.src([styles+'/**/*.scss', vendor + '/**/*.css', '!'+vendor+'/**/*.min.css'])
+        .pipe(sass())
+        .pipe(sourcemaps.init())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: true
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(minifyCss())
+        .pipe(concat('global.min.css'))
+        .pipe(gulp.dest(styles+'/'));
+});
 
 // Runners
 gulp.task('run', function(){

@@ -1,4 +1,4 @@
-angular.module('app').factory('Toastr', function(){
+angular.module('app').factory('Toastr', [function(){
     return {
         successToast: function(message){
             toastr.options.closeButton = true;
@@ -11,4 +11,4 @@ angular.module('app').factory('Toastr', function(){
             toastr.error(message);
         }
     }
-});
+}]);

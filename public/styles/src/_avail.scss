@@ -1,0 +1,20 @@
+.google-maps-widget {
+  .angular-google-map-container {
+    height: 400px;
+  }
+}
+.hotel-image-thumbnails {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 10px;
+  height: 70px;
+  overflow: hidden;
+  .hotel-image {
+    padding-left: 0;
+    padding-right: 0;
+    cursor: pointer;
+  }
+}
+.empty-tab {
+  visibility: hidden;
+}

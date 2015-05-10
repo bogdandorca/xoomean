@@ -3,15 +3,24 @@
     <words>
       <w>autocompelte</w>
       <w>autocomplete</w>
+      <w>autoprefixer</w>
       <w>bogdandorca</w>
       <w>cidt</w>
       <w>codt</w>
+      <w>coords</w>
       <w>datepicker</w>
       <w>dropdown</w>
       <w>expedia</w>
       <w>fontawesome</w>
+      <w>gmapgoogle</w>
+      <w>googleapis</w>
       <w>infos</w>
+      <w>lodash</w>
+      <w>minify</w>
       <w>navbar</w>
+      <w>nodemon</w>
+      <w>rimraf</w>
+      <w>sourcemaps</w>
       <w>toastr</w>
       <w>tpls</w>
       <w>upsert</w>

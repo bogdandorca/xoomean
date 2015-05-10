@@ -1,4 +1,4 @@
-angular.module('app').controller('ConfirmationCtrl', function($scope, $http, $routeParams){
+angular.module('app').controller('ConfirmationCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
     var itineraryId = $routeParams.itineraryId,
         email = $routeParams.email;
     $scope.heading = itineraryId;
@@ -10,4 +10,4 @@ angular.module('app').controller('ConfirmationCtrl', function($scope, $http, $ro
         .error(function(err){
             console.log(err);
         });
-});
+}]);

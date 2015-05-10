@@ -1,4 +1,4 @@
-angular.module('app').directive('ngAutocomplete', function($document, $http, PopularDestinations){
+angular.module('app').directive('ngAutocomplete', ['$document', '$http', 'PopularDestinations', function($document, $http, PopularDestinations){
     var linker = function(scope, element, attr){
         $document.click(function(){
             scope.$apply(scope.hideAutocomplete = true);
@@ -78,4 +78,4 @@ angular.module('app').directive('ngAutocomplete', function($document, $http, Pop
         controller: controller,
         templateUrl: './partials/index/autocomplete'
     }
-});
+}]);

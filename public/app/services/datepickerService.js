@@ -1,4 +1,4 @@
-angular.module('app').factory('DatePicker', function(){
+angular.module('app').factory('DatePicker', [function(){
     return {
         formatDate: function(day, month, year, format){
             if(format === 'dd/mm/yyyy'){
@@ -33,4 +33,4 @@ angular.module('app').factory('DatePicker', function(){
         formats: ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd/MM/yyyy', 'shortDate'],
         format: 'dd/MM/yyyy'
     };
-});
+}]);

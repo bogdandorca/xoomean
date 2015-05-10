@@ -1,0 +1,16 @@
+.full-page-loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  left:0;
+  top: 0;
+  text-align: center;
+  .full-page-loading-text {
+    margin-top: 20%;
+    i {
+      color: #F87E47;
+    }
+  }
+}

@@ -1,16 +1,73 @@
-.hotel {
-  height: 100px;
-  width: 100%;
-  padding: 10px !important;
-  cursor: pointer;
-  img {
+.filters-outer {
+  margin: 0 5px;
+}
+.outer-hotel {
+  padding: 0 5px;
+  opacity: 1;
+  .hotel {
+    height: 100%;
     width: 100%;
-  }
-  .hotel-details {
-    padding-left: 0;
-    h2 {
-      font-size: 1.8em;
-      margin: 0;
+    padding: 0 !important;
+    div {
+      padding-left: 0;
+      padding-right: 0;
     }
+    .hotel-image {
+      img {
+        width: 100%;
+        max-height: 185px;
+      }
+    }
+    .hotel-details {
+      height: 50px;
+      margin-top: 5px;
+      h2 {
+        font-size: 1.8em;
+        margin: 0;
+      }
+    }
+    .price {
+      p {
+        font-size: 0.8em;
+        margin-bottom: 0;
+      }
+      h3 {
+        font-size: 1.4em;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    .star-rating {
+      color: #f87e47;
+      min-height: 20px;
+      text-align: right;
+      padding-top: 12px;
+      font-size: 1.4em;
+      @media screen and (max-width: 1200px){
+        padding-top: 17px;
+        font-size: 1em;
+      }
+      @media screen and (max-width: 767px){
+        padding-top: 12px;
+        font-size: 1.4em;
+      }
+    }
+    .select-btn {
+      margin-top: 10px;
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+  &.ng-enter {
+    -webkit-transition: 0.3s linear all; /* Chrome */
+    transition: 0.3s linear all;
+    opacity: 0;
+  }
+  &.ng-enter-stagger {
+    transition-delay: 0.05s;
+  }
+  &.ng-enter-active {
+    opacity: 1;
   }
 }

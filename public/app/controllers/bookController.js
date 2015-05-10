@@ -1,4 +1,4 @@
-angular.module('app').controller('BookCtrl', function($scope, $http, $routeParams, $location){
+angular.module('app').controller('BookCtrl', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
@@ -55,4 +55,4 @@ angular.module('app').controller('BookCtrl', function($scope, $http, $routeParam
                 // TODO: error catch
             });
     };
-});
+}]);

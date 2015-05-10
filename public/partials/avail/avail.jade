@@ -1,19 +1,46 @@
-.col-md-6
-    .card.col-md-12
+.full-page-loader(ng-show="rooms.length==0")
+    .full-page-loading-text
+        p Looking for the best rates
+        i.fa.fa-circle-o-notch.fa-4x.fa-spin
+.col-md-6.col-container
+    tabset(justified="true")
+        tab(heading="Photos")
+            .card.tab-card.col-xs-12
+                .card-body.col-md-12
+                    .hotel-image-carousel
+                        img(ng-src="{{selectedHotelImage}}")
+                    .hotel-image-thumbnails
+                        .hotel-image(ng-repeat="image in hotelImages track by $index").col-md-2
+                            img(ng-src="{{translate(image.url)}}", ng-click="changeHotelImage($index)")
+        tab(heading="Map", ng-click="map.refresh()")
+            .card.tab-card.col-xs-12
+                .card-body.col-md-12
+                    .google-maps-widget
+                        ui-gmap-google-map(ng-if="map.show",center="map.center", zoom="map.zoom", refresh="map.show")
+                            ui-gmap-marker(coords="map.marker.coords", idkey="map.marker.id")
+        tab(heading="Info").empty-tab
+            .card.tab-card.col-xs-12
+                .card-body.col-md-12
+                    .hotel-image-carousel
+                        carousel(interval="0")
+                            slide(ng-repeat="image in hotelImages")
+                                img(ng-src="{{image.url}}")
+.col-md-6.col-container
+    .card.col-xs-12
         .card-heading.col-md-12
-            h1 {{hotelName}}
+            h2 Property description
         .card-body.col-md-12
-            .hotel-image-carousel
-                carousel(interval="0")
-                    slide(ng-repeat="image in hotelImages")
-                        img(ng-src="{{image.url}}")
-            .col-md-12.col-sm-12.col-xs-12(ng-hide="rooms.length === 0", ng-bind-html="checkInInstructions | unsafe")
-            .loader.col-md-12.col-sm-12.col-xs-12(ng-show="rooms.length === 0")
-                i.fa.fa-spinner.fa-3x.fa-spin
-.col-md-6
-    .card.col-md-12
+            p(ng-bind-html="propertyDescription | unsafe")
+.col-md-6.col-container
+    .card.col-xs-12
+        .card-heading.col-md-12
+            h2 Check-in instructions
+        .card-body.col-md-12
+            p(ng-bind-html="checkInInstructions | unsafe")
+.col-md-6.col-container
+    .card.col-xs-12
         .card-heading.col-md-12.col-sm-12.col-xs-12
-            h1 Rooms
+            h2 Rooms
         .card-body.col-md-12.col-sm-12.col-xs-12
             accordion(close-others="oneAtATime")
                 accordion-group(heading="{{room.roomTypeDescription}}", ng-repeat="room in rooms")

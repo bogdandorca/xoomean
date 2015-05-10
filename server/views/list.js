@@ -12,6 +12,14 @@ module.exports = function(app){
             checkIn = req.params.checkIn.standardizeDate(),
             checkOut = req.params.checkOut.standardizeDate(),
             offset = req.params.checkOut;
-        listCtrl.getHotelsByDestination(id, checkIn, checkOut, res);
+        if(type==='city'){
+            listCtrl.getHotelsByDestination(id, checkIn, checkOut, res);
+        } else if(type==='airport'){
+            listCtrl.getHotelsByAirport(id, checkIn, checkOut, res);
+        } else if(type==='hotel'){
+            listCtrl.getHotelsById(id, checkIn, checkOut, res);
+        } else {
+            res.send('Error');
+        }
     });
 };
