@@ -1,0 +1,54 @@
+.card {
+  &.primal {
+    .card-heading {
+      padding: 20px 10px;
+      margin-bottom: 0;
+      .refundable-room {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: #f87e47;
+        text-align: center;
+        cursor: default;
+        h3 {
+          margin: 0;
+          padding: 0;
+          font-size: 0.8em;
+          color: #fff;
+          line-height: 3.5;
+          text-transform: uppercase;
+        }
+      }
+      .price {
+        &.price-per-night {
+          h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.4em;
+            color: #fff;
+          }
+        }
+        &.price-per-stay {
+          font-size: 1em;
+          color: #fff;
+        }
+      }
+    }
+    .card-body {
+      padding: 5px 20px;
+      .group {
+        border-bottom: 1px solid #f2f1ee;
+        padding: 10px 0;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .value-add {
+        margin-top: 2px;
+      }
+      .bed-type {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
