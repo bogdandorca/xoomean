@@ -70,6 +70,8 @@ angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http'
             $scope.hotelImages = data.HotelImages.HotelImage;
             $scope.selectedHotelImage = $scope.hotelImages[0].url;
             $scope.propertyDescription = data.HotelDetails.propertyDescription;
+            $scope.amenitiesDescription = data.HotelDetails.amenitiesDescription;
+            $scope.areaInfo = data.HotelDetails.areaInformation;
             $scope.map.setCoordinates(data.HotelSummary.latitude, data.HotelSummary.longitude);
         });
     $scope.getBedTypes = function(bedTypes){

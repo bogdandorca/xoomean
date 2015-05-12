@@ -41,6 +41,13 @@
     .loader {
       text-align: center;
     }
+    .disclaimer {
+      p {
+        font-size: 0.8em;
+        bottom: 0;
+        color: #b4b2aa;
+      }
+    }
   }
   // Card Main
   &.primal {

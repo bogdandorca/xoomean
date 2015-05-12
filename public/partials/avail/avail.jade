@@ -17,7 +17,8 @@
                             .hotel-image(ng-repeat="image in hotelImages track by $index", ng-animate="hotel-image")
                                 img(ng-src="{{translate(image.url, 'b', 't')}}", ng-click="changeHotelImage($index)", ng-class="$index===activeImage ? 'active' : ''").hotel-image-thumbnail
                         .image-disclaimer.disclaimer
-                            p It is the responsibility of the hotel chain and/or the individual property to ensure the accuracy of the photos displayed. Xoomean is not responsible for any inaccuracies in the photos.
+                            p
+                                i *It is the responsibility of the hotel chain and/or the individual property to ensure the accuracy of the photos displayed. Xoomean is not responsible for any inaccuracies in the photos.
             tab(heading="Map", ng-click="map.refresh()")
                 .card.tab-card.col-xs-12
                     .card-body.col-md-12
@@ -43,7 +44,19 @@
                 h2 Check-in instructions
             .card-body.col-md-12
                 p(ng-bind-html="checkInInstructions | unsafe")
-.col-md-4.col-container
+    .col-md-12.col-container
+        .card.col-xs-12(ng-show="amenitiesDescription !== null && amenitiesDescription.length > 0")
+            .card-heading.col-md-12
+                h2 Amenities
+            .card-body.col-md-12
+                p(ng-bind-html="amenitiesDescription | unsafe")
+    .col-md-12.col-container
+        .card.col-xs-12(ng-show="areaInfo !== null && areaInfo.length > 0")
+            .card-heading.col-md-12
+                h2 Area Information
+            .card-body.col-md-12
+                p(ng-bind-html="areaInfo | unsafe")
+.col-md-4.col-container.rooms-col
     .col-md-12.col-container
         .card.primal.col-xs-12(ng-repeat="room in rooms track by $index", ng-show="$index < 5")
             .card-heading.col-md-12.col-sm-12.col-xs-12
@@ -60,6 +73,8 @@
                         p {{room.roomTypeDescription}}
                 .group.col-md-12(ng-show="room.ValueAdds.ValueAdd.length > 0")
                     .value-add(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
+                .group.col-md-12
+                    p {{room.RateInfos.RateInfo.cancellationPolicy}}
                 .group.col-md-12
                     .bed-type
                         i.fa.fa-bed
