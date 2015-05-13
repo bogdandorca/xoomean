@@ -72,13 +72,14 @@
                     .room-description
                         p {{room.roomTypeDescription}}
                 .group.col-md-12(ng-show="room.ValueAdds.ValueAdd.length > 0")
-                    .value-add(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
+                    ul.fa-ul
+                        li.value-add(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
                 .group.col-md-12
                     p {{room.RateInfos.RateInfo.cancellationPolicy}}
                 .group.col-md-12
                     .bed-type
-                        i.fa.fa-bed
-                        span  {{getBedTypes(room.BedTypes)}}
+                        ul.fa-ul
+                            li(ng-bind-html="getBedTypes(room.BedTypes) | unsafe")
                 .group.col-md-12
                     .room-disclaimer.disclaimer
                         p The room rates listed are for double occupancy per room unless otherwise stated and exclude tax recovery charges and service fees.
