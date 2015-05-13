@@ -10,5 +10,5 @@ angular.module('app').factory('Toastr', [function(){
             toastr.options.preventDuplicates = true;
             toastr.error(message);
         }
-    }
+    };
 }]);

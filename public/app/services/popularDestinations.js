@@ -11,5 +11,5 @@ angular.module('app').factory('PopularDestinations', ['$http', '$q', function($h
         indentSelection: function(destinationId){
             $http.post('/api/popular/'+destinationId, {});
         }
-    }
+    };
 }]);

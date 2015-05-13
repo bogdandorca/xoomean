@@ -2,13 +2,13 @@ angular.module('app').factory('DatePicker', [function(){
     return {
         formatDate: function(day, month, year, format){
             if(format === 'dd/mm/yyyy'){
-                return (day.toString().dmFormat())+'/'+(month.toString().dmFormat())+'/'+year
+                return (day.toString().dmFormat())+'/'+(month.toString().dmFormat())+'/'+year;
             } else if(format === 'mm/dd/yyyy'){
-                return (month.toString().dmFormat())+'/'+(day.toString().dmFormat())+'/'+year
+                return (month.toString().dmFormat())+'/'+(day.toString().dmFormat())+'/'+year;
             } else if(format === 'yyyy/mm/dd') {
-                return year + '/' + (month.toString().dmFormat()) + '/' + (day.toString().dmFormat())
+                return year + '/' + (month.toString().dmFormat()) + '/' + (day.toString().dmFormat());
             } else if(format === 'dd-mm-yyyy') {
-                return (day.toString().dmFormat())+'-'+(month.toString().dmFormat())+'-'+year
+                return (day.toString().dmFormat())+'-'+(month.toString().dmFormat())+'-'+year;
             } else {
                 return '';
             }

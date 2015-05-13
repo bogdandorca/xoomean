@@ -1,13 +1,13 @@
 angular.module('app').directive('ngAutocomplete', ['$document', '$http', 'PopularDestinations', function($document, $http, PopularDestinations){
-    var linker = function(scope, element, attr){
+    var linker = function(scope, element){
         $document.click(function(){
             scope.$apply(scope.hideAutocomplete = true);
         });
-        element.click(function(e){
-            e.stopPropagation();
+        element.click(function(event){
+            event.stopPropagation();
         });
     };
-    var controller = function($scope, $element){
+    var controller = function($scope){
         $scope.autocompleteList = {
             cities: [],
             hotels: [],
@@ -18,7 +18,7 @@ angular.module('app').directive('ngAutocomplete', ['$document', '$http', 'Popula
                 cities: [],
                 hotels: [],
                 airports: []
-            }
+            };
         };
 
         // Get autocomplete list
@@ -70,12 +70,12 @@ angular.module('app').directive('ngAutocomplete', ['$document', '$http', 'Popula
             $scope.selectedDestination = item;
             PopularDestinations.indentSelection(item.DestinationId);
             resetAutocomplete();
-        }
+        };
     };
     return {
         restrict: 'A',
         link: linker,
         controller: controller,
         templateUrl: './partials/index/autocomplete'
-    }
+    };
 }]);
