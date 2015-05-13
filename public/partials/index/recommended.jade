@@ -3,7 +3,7 @@
         h2 Recommended destinations
     .card-body.col-md-12.col-sm-12.col-xs-12
         .recommendation.col-md-4.col-sm-6.col-xs-12(ng-repeat="destination in popularDestinations", ng-click="searchHotels(destination, defaultCheckIn, defaultCheckOut)", ng-animate="recommendation")
-            img(ng-src="/img/api/p/{{destination.DestinationId}}.jpg").img-responsive
+            img(ng-src="/img/prod/api/p/{{destination.DestinationId}}.jpg").img-responsive
             h2 {{destination.Name}}
             p
                 i Destination details
