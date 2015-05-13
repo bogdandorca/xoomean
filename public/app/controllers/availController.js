@@ -1,4 +1,4 @@
-angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http', '$location', 'ValueAdds', 'EanImage', '$timeout', function($scope, $routeParams, $http, $location, ValueAdds, EanImage, $timeout){
+angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http', '$location', 'ValueAdds', 'EanImage', '$timeout', '$sce', function($scope, $routeParams, $http, $location, ValueAdds, EanImage, $timeout, $sce){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
@@ -69,7 +69,8 @@ angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http'
             data = data.HotelInformationResponse;
             $scope.hotelImages = data.HotelImages.HotelImage;
             $scope.selectedHotelImage = $scope.hotelImages[0].url;
-            $scope.propertyDescription = data.HotelDetails.propertyDescription;
+            $scope.propertyDescription = data.HotelDetails.propertyDescription.toString();
+            console.log($scope.propertyDescription);
             $scope.amenitiesDescription = data.HotelDetails.amenitiesDescription;
             $scope.areaInfo = data.HotelDetails.areaInformation;
             $scope.map.setCoordinates(data.HotelSummary.latitude, data.HotelSummary.longitude);
