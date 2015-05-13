@@ -1,7 +1,7 @@
 .card {
   background-color: #fff;
   border: 1px solid;
-  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5 !important;
   -webkit-border-radius: 3px;
   margin-bottom: 10px;
   padding: 0;
@@ -41,10 +41,31 @@
     .loader {
       text-align: center;
     }
+    .disclaimer {
+      p {
+        font-size: 0.8em;
+        bottom: 0;
+        color: #b4b2aa;
+      }
+    }
+  }
+  // Card Main
+  &.primal {
+    border: none;
+    .card-heading {
+      background-color: #f4cc54;
+      text-align: left;
+      margin-bottom: 10px;
+      border: none;
+    }
   }
 }
 .nav-tabs {
   .ng-isolate-scope {
+    padding-left: 10px;
+    &:first-child {
+      padding-left: 0;
+    }
     a {
       background-color: #fff;
       border-left: 1px solid #ddd;

@@ -8,19 +8,28 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     stripDebug = require('gulp-strip-debug');
 
-// Env
+// Environment
 var appsDir = './public/app';
 var scriptsDir = './public/scripts';
 
 gulp.task('js', function(){
-    del([appsDir+'/application.js']);
-    return gulp.src([appsDir + '/app.js', appsDir + '/**/*.js', scriptsDir + '/**/*.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(sourcemaps.init())
-        .pipe(concat('application.js'))
-        .pipe(sourcemaps.write())
-        .pipe(stripDebug())
-        .pipe(gulpIf(argv.prod, uglify({mangle: false})))
-        .pipe(gulp.dest(appsDir+'/'));
+    try {
+        del([appsDir + '/application.js'], function (err) {
+            if (!err) {
+                return gulp.src([appsDir + '/app.js', appsDir + '/**/*.js', scriptsDir + '/**/*.js'])
+                    .pipe(jshint())
+                    .pipe(jshint.reporter('default'))
+                    .pipe(sourcemaps.init())
+                    .pipe(concat('application.js'))
+                    .pipe(sourcemaps.write())
+                    .pipe(stripDebug())
+                    .pipe(gulpIf(argv.prod, uglify({mangle: false})))
+                    .pipe(gulp.dest(appsDir + '/'));
+            } else {
+                console.log(err);
+            }
+        });
+    } catch(err){
+        console.log(err);
+    }
 });

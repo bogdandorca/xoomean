@@ -2,53 +2,85 @@
     .full-page-loading-text
         p Looking for the best rates
         i.fa.fa-circle-o-notch.fa-4x.fa-spin
-.col-md-6.col-container
-    tabset(justified="true")
-        tab(heading="Photos")
-            .card.tab-card.col-xs-12
-                .card-body.col-md-12
-                    .hotel-image-carousel
-                        img(ng-src="{{selectedHotelImage}}")
-                    .hotel-image-thumbnails
-                        .hotel-image(ng-repeat="image in hotelImages track by $index").col-md-2
-                            img(ng-src="{{translate(image.url)}}", ng-click="changeHotelImage($index)")
-        tab(heading="Map", ng-click="map.refresh()")
-            .card.tab-card.col-xs-12
-                .card-body.col-md-12
-                    .google-maps-widget
-                        ui-gmap-google-map(ng-if="map.show",center="map.center", zoom="map.zoom", refresh="map.show")
-                            ui-gmap-marker(coords="map.marker.coords", idkey="map.marker.id")
-        tab(heading="Info").empty-tab
-            .card.tab-card.col-xs-12
-                .card-body.col-md-12
-                    .hotel-image-carousel
-                        carousel(interval="0")
-                            slide(ng-repeat="image in hotelImages")
-                                img(ng-src="{{image.url}}")
-.col-md-6.col-container
-    .card.col-xs-12
-        .card-heading.col-md-12
-            h2 Property description
-        .card-body.col-md-12
-            p(ng-bind-html="propertyDescription | unsafe")
-.col-md-6.col-container
-    .card.col-xs-12
-        .card-heading.col-md-12
-            h2 Check-in instructions
-        .card-body.col-md-12
-            p(ng-bind-html="checkInInstructions | unsafe")
-.col-md-6.col-container
-    .card.col-xs-12
-        .card-heading.col-md-12.col-sm-12.col-xs-12
-            h2 Rooms
-        .card-body.col-md-12.col-sm-12.col-xs-12
-            accordion(close-others="oneAtATime")
-                accordion-group(heading="{{room.roomTypeDescription}}", ng-repeat="room in rooms")
-                    img(ng-src="{{room.RoomImages.RoomImage.url}}").col-md-6
-                    .col-md-6
-                        ul.col-md-12
-                            li(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
-                                p {{valueAdd.description}}
-                    .col-md-12 {{room.RateInfos.RateInfo.cancellationPolicy}}
-                    .col-md-12
-                        .btn.btn-main(ng-click="selectRoom(room)") Select
+.col-md-8.col-container
+    .col-md-12.col-container
+        tabset(justified="true")
+            tab(heading="Photos")
+                .card.tab-card.col-xs-12
+                    .card-body.col-md-12
+                        .hotel-image-carousel
+                            img(ng-src="{{selectedHotelImage}}")
+                            .hotel-image-caption
+                                h3 {{hotelName}}
+                                p {{hotelImages[activeImage].caption}}
+                        .hotel-image-thumbnails
+                            .hotel-image(ng-repeat="image in hotelImages track by $index", ng-animate="hotel-image")
+                                img(ng-src="{{translate(image.url, 'b', 't')}}", ng-click="changeHotelImage($index)", ng-class="$index===activeImage ? 'active' : ''").hotel-image-thumbnail
+                        .image-disclaimer.disclaimer
+                            p
+                                i *It is the responsibility of the hotel chain and/or the individual property to ensure the accuracy of the photos displayed. Xoomean is not responsible for any inaccuracies in the photos.
+            tab(heading="Map", ng-click="map.refresh()")
+                .card.tab-card.col-xs-12
+                    .card-body.col-md-12
+                        .google-maps-widget
+                            ui-gmap-google-map(ng-if="map.show",center="map.center", zoom="map.zoom", refresh="map.show")
+                                ui-gmap-marker(coords="map.marker.coords", idkey="map.marker.id")
+            tab(heading="Info").empty-tab
+                .card.tab-card.col-xs-12
+                    .card-body.col-md-12
+                        .hotel-image-carousel
+                            carousel(interval="0")
+                                slide(ng-repeat="image in hotelImages")
+                                    img(ng-src="{{image.url}}")
+    .col-md-12.col-container
+        .card.col-xs-12
+            .card-heading.col-md-12
+                h2 Property description
+            .card-body.col-md-12
+                p(ng-bind-html="propertyDescription | unsafe")
+    .col-md-12.col-container
+        .card.col-xs-12
+            .card-heading.col-md-12
+                h2 Check-in instructions
+            .card-body.col-md-12
+                p(ng-bind-html="checkInInstructions | unsafe")
+    .col-md-12.col-container
+        .card.col-xs-12(ng-show="amenitiesDescription !== null && amenitiesDescription.length > 0")
+            .card-heading.col-md-12
+                h2 Amenities
+            .card-body.col-md-12
+                p(ng-bind-html="amenitiesDescription | unsafe")
+    .col-md-12.col-container
+        .card.col-xs-12(ng-show="areaInfo !== null && areaInfo.length > 0")
+            .card-heading.col-md-12
+                h2 Area Information
+            .card-body.col-md-12
+                p(ng-bind-html="areaInfo | unsafe")
+.col-md-4.col-container.rooms-col
+    .col-md-12.col-container
+        .card.primal.col-xs-12(ng-repeat="room in rooms track by $index", ng-show="$index < 5")
+            .card-heading.col-md-12.col-sm-12.col-xs-12
+                .col-md-2
+                    .refundable-room(popover-placement="right", popover="{{room.RateInfos.RateInfo.cancellationPolicy}}" popover-trigger="mouseenter")
+                        h3 {{room.RateInfos.RateInfo.nonRefundable ? 'N-Ref' : 'Ref'}}
+                .col-md-10
+                    .price.price-per-night
+                        h3 ${{room.RateInfos.RateInfo.ChargeableRateInfo['@averageBaseRate']}} / night
+                    .price.price-per-stay Total: ${{room.RateInfos.RateInfo.ChargeableRateInfo['@total']}}
+            .card-body.col-md-12.col-sm-12.col-xs-12
+                .group.col-md-12
+                    .room-description
+                        p {{room.roomTypeDescription}}
+                .group.col-md-12(ng-show="room.ValueAdds.ValueAdd.length > 0")
+                    .value-add(ng-repeat="valueAdd in room.ValueAdds.ValueAdd", ng-bind-html="valueAddIconGenerator(valueAdd.description) | unsafe")
+                .group.col-md-12
+                    p {{room.RateInfos.RateInfo.cancellationPolicy}}
+                .group.col-md-12
+                    .bed-type
+                        i.fa.fa-bed
+                        span  {{getBedTypes(room.BedTypes)}}
+                .group.col-md-12
+                    .room-disclaimer.disclaimer
+                        p The room rates listed are for double occupancy per room unless otherwise stated and exclude tax recovery charges and service fees.
+                .group.col-md-12
+                    button.btn.btn-main(ng-click="selectRoom(room)") Select

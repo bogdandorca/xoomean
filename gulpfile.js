@@ -1,18 +1,16 @@
 var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     ignore = require('gulp-ignore'),
-    del = require('del'),
     concat = require('gulp-concat'),
     karma = require('karma').server,
     taskListing = require('gulp-task-listing'),
     git = require('gulp-git'),
-    requireDir = require('require-dir'),
-    argv = require('yargs').argv,
-    gulpIf = require('gulp-if');
+    requireDir = require('require-dir');
 
 // Environment
 var styles = './public/styles';
 var vendor = './public/vendor';
+var appsDir = './public/app';
 
 requireDir('./gulpTasks');
 
@@ -25,7 +23,8 @@ gulp.task('run', function(){
         ext: 'js jade',
         env: { 'NODE_ENV': 'development' }
     });
-    gulp.watch(styles+'/**/*.scss', ['sass', 'js']);
+    gulp.watch(styles+'/**/*.scss', ['sass']);
+    gulp.watch(appsDir+'/**/*.js', ['js']);
 });
 gulp.task('test', function(done){
     karma.start({

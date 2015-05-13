@@ -22,6 +22,6 @@ angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngAnimate', 'uiGmapgoogle-map
             controller: 'ConfirmationCtrl'
         })
         .otherwise({
-            redirectTo: '/'
+            templateUrl: 'partials/404'
         });
 }]);
