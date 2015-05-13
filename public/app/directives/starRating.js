@@ -1,4 +1,4 @@
-angular.module('app').directive('ngStarRating', function(){
+angular.module('app').directive('ngStarRating', [function(){
     var linker = function(scope, element, attr){
         scope.numberOfStars = attr.stars;
     };
@@ -27,5 +27,5 @@ angular.module('app').directive('ngStarRating', function(){
         restrict: 'E',
         template: getTemplate(),
         link: linker
-    }
-});
+    };
+}]);

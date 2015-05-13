@@ -11,14 +11,17 @@ angular.module('app').controller('ListCtrl', ['$scope', '$http', '$routeParams',
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
     HotelList.getHotelList(type, destinationId, checkIn, checkOut).then(function(data){
-        if(type==='hotel'){
-            $scope.hotelSelect(data.HotelList.HotelSummary.hotelId);
-        }
-        // remove the loader
-        if(data.HotelList.HotelSummary.constructor === Array){
-            $scope.hotelList = data.HotelList.HotelSummary;
+        if(!data.EanWsError){
+            if(type==='hotel'){
+                $scope.hotelSelect(data.HotelList.HotelSummary.hotelId);
+            } else if(data.HotelList.HotelSummary.constructor === Array){
+                $scope.hotelList = data.HotelList.HotelSummary;
+            } else {
+                $scope.hotelList.push(data.HotelList.HotelSummary);
+            }
         } else {
-            $scope.hotelList.push(data.HotelList.HotelSummary);
+            alert('Incorrect info');
+            $location.path('/');
         }
     });
     HotelList.getDestinationDetails(destinationId).then(function(data){

@@ -21,5 +21,5 @@ angular.module('app').factory('HotelList', ['$http', '$q', function($http, $q){
                 });
             return defer.promise;
         }
-    }
+    };
 }]);

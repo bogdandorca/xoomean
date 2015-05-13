@@ -77,9 +77,9 @@ angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http'
         });
     $scope.getBedTypes = function(bedTypes){
         if(bedTypes['@size'] > 1){
-            return bedTypes.BedType[0].description+' / '+bedTypes.BedType[1].description
+            return '<i class="fa-li fa fa-bed"></i>'+bedTypes.BedType[0].description+'<i class="fa-li fa fa-bed"></i>'+bedTypes.BedType[1].description;
         } else {
-            return bedTypes.BedType.description
+            return '<i class="fa-li fa fa-bed"></i>'+bedTypes.BedType.description;
         }
     };
     // Value Adds
