@@ -16,13 +16,13 @@ gulp.task('js', function(){
     try {
         del([appsDir + '/application.js'], function (err) {
             if (!err) {
-                return gulp.src([appsDir + '/app.js', appsDir + '/**/*.js', scriptsDir + '/**/*.js'])
+                return gulp.src([scriptsDir + '/**/*.js', appsDir + '/app.js', appsDir + '/**/*.js'])
                     .pipe(jshint())
                     .pipe(jshint.reporter('default'))
                     .pipe(sourcemaps.init())
                     .pipe(concat('application.js'))
                     .pipe(sourcemaps.write())
-                    .pipe(stripDebug())
+                    .pipe(gulpIf(argv.prod, stripDebug()))
                     .pipe(gulpIf(argv.prod, uglify({mangle: false})))
                     .pipe(gulp.dest(appsDir + '/'));
             } else {
