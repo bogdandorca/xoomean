@@ -17,7 +17,7 @@ requireDir('./gulpTasks');
 gulp.task('help', taskListing);
 
 // Runners
-gulp.task('run', ['img'], function(){
+gulp.task('run', ['sass', 'js'], function(){
     nodemon({
         script: 'index.js',
         ext: 'js jade',

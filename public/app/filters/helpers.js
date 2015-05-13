@@ -1,1 +1,5 @@
-angular.module('app').filter('unsafe', ['$sce', function($sce) { return $sce.trustAsHtml; }]);
+angular.module('app').filter('unsafe', ['$sce', function($sce) {
+    return function(encodedText){
+        return $sce.trustAsHtml(encodedText);
+    };
+}]);

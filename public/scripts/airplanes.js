@@ -5,3 +5,8 @@ String.prototype.dmFormat = function(){
         return this;
     }
 };
+String.prototype.decodeHtmlEntity = function(){
+    var ta = document.createElement('textarea');
+    ta.innerHTML = this;
+    return ta.value;
+};

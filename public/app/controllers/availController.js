@@ -1,10 +1,12 @@
-angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http', '$location', 'ValueAdds', 'EanImage', '$timeout', '$sce', function($scope, $routeParams, $http, $location, ValueAdds, EanImage, $timeout, $sce){
+angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http', '$location', 'ValueAdds', 'EanImage', '$timeout', '$sanitize', function($scope, $routeParams, $http, $location, ValueAdds, EanImage, $timeout, $sanitize){
     var hotelId = $routeParams.hotelId;
     var checkIn = $routeParams.checkIn;
     var checkOut = $routeParams.checkOut;
 
     $scope.rooms = [];
-    $scope.hotelName = 'Hotel Details';
+    $scope.hotelName = '';
+    $scope.hotelAddress = '';
+    $scope.hotelLocation = '';
     $scope.checkInInstructions = '';
     $scope.valueAdds = [];
     $scope.translate = function(imageUrl, from, to){
@@ -49,7 +51,6 @@ angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http'
                     $scope.rooms.push(data.HotelRoomResponse);
                 }
                 $scope.hotelName = data.hotelName;
-                $scope.checkInInstructions = data.checkInInstructions;
             } else {
                 alert('There are no rooms available for this hotel available');
                 $location.path('/');
@@ -63,17 +64,30 @@ angular.module('app').controller('AvailCtrl', ['$scope', '$routeParams', '$http'
         $scope.selectedHotelImage = $scope.hotelImages[imageIndex].url;
         $scope.activeImage = imageIndex;
     };
+    $scope.propertyAmenities = [];
+    $scope.starRating = 0;
     $http.get('/api/hotel/information/'+hotelId)
         .success(function(data){
             console.log(data);
             data = data.HotelInformationResponse;
             $scope.hotelImages = data.HotelImages.HotelImage;
             $scope.selectedHotelImage = $scope.hotelImages[0].url;
-            $scope.propertyDescription = data.HotelDetails.propertyDescription.toString();
-            console.log($scope.propertyDescription);
-            $scope.amenitiesDescription = data.HotelDetails.amenitiesDescription;
-            $scope.areaInfo = data.HotelDetails.areaInformation;
+            $scope.hotelAddress = data.HotelSummary.address1 + ', ' + data.HotelSummary.city;
+            $scope.hotelLocation = data.HotelSummary.locationDescription;
+            $scope.propertyDescription = data.HotelDetails.propertyDescription.decodeHtmlEntity();
+            $scope.amenitiesDescription = data.HotelDetails.amenitiesDescription.decodeHtmlEntity();
+            $scope.areaInfo = data.HotelDetails.areaInformation.decodeHtmlEntity();
+            // Important to be displayed
+            $scope.knowBeforeYouGo = data.HotelDetails.knowBeforeYouGoDescription ? data.HotelDetails.knowBeforeYouGoDescription.decodeHtmlEntity() : '';
+            $scope.checkInInstructions = data.HotelDetails.checkInInstructions.decodeHtmlEntity();
+            $scope.hotelPolicy = data.HotelDetails.hotelPolicy.decodeHtmlEntity();
+            $scope.propertInformation = data.HotelDetails.propertyInformation.decodeHtmlEntity();
+
             $scope.map.setCoordinates(data.HotelSummary.latitude, data.HotelSummary.longitude);
+            $scope.propertyAmenities = data.PropertyAmenities.PropertyAmenity;
+            // TODO: Set hotelRating
+            $scope.starRating = data.HotelSummary.hotelRating;
+            $scope.tripAdvisor = data.HotelSummary.tripAdvisorRatingUrl;
         });
     $scope.getBedTypes = function(bedTypes){
         if(bedTypes['@size'] > 1){

@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Bogdan">
     <words>
+      <w>advisor</w>
       <w>autocompelte</w>
       <w>autocomplete</w>
       <w>autoprefixer</w>
@@ -21,6 +22,7 @@
       <w>nodemon</w>
       <w>rimraf</w>
       <w>sourcemaps</w>
+      <w>textarea</w>
       <w>toastr</w>
       <w>tpls</w>
       <w>upsert</w>

@@ -2,12 +2,34 @@
     .full-page-loading-text
         p Looking for the best rates
         i.fa.fa-circle-o-notch.fa-4x.fa-spin
-.col-md-8.col-container
+.col-md-8.col-container.tab-card(ng-show="rooms.length>0")
     .col-md-12.col-container
         tabset(justified="true")
-            tab(heading="Photos")
+            tab(heading="Hotel")
+                .card.tab-card.col-xs-12
+                    .card-body.hotel-cover.col-md-12
+                        .hotel-cover-image.col-md-4
+                            img(ng-src="{{hotelImages[0].url}}").img-responsive
+                        .hotel-cover-details.col-md-8
+                            h1 {{hotelName}}
+                            h2 {{hotelAddress}}
+                            h3
+                                i {{hotelLocation}}
+                            .star-rating
+                                ng-star-rating(stars="2")
+                            .trip-advisor-rating
+                                img(ng-src="{{tripAdvisor}}")
+                        .hotel-cover-description.col-md-12
+                            p(ng-bind-html="amenitiesDescription | unsafe")
+            tab(heading="Location", ng-click="map.refresh()")
                 .card.tab-card.col-xs-12
                     .card-body.col-md-12
+                        .google-maps-widget
+                            ui-gmap-google-map(ng-if="map.show",center="map.center", zoom="map.zoom", refresh="map.show")
+                                ui-gmap-marker(coords="map.marker.coords", idkey="map.marker.id")
+            tab(heading="Gallery")
+                .card.tab-card.col-xs-12
+                    .card-body.hotel-images.col-md-12
                         .hotel-image-carousel
                             img(ng-src="{{selectedHotelImage}}")
                             .hotel-image-caption
@@ -19,19 +41,6 @@
                         .image-disclaimer.disclaimer
                             p
                                 i *It is the responsibility of the hotel chain and/or the individual property to ensure the accuracy of the photos displayed. Xoomean is not responsible for any inaccuracies in the photos.
-            tab(heading="Map", ng-click="map.refresh()")
-                .card.tab-card.col-xs-12
-                    .card-body.col-md-12
-                        .google-maps-widget
-                            ui-gmap-google-map(ng-if="map.show",center="map.center", zoom="map.zoom", refresh="map.show")
-                                ui-gmap-marker(coords="map.marker.coords", idkey="map.marker.id")
-            tab(heading="Info").empty-tab
-                .card.tab-card.col-xs-12
-                    .card-body.col-md-12
-                        .hotel-image-carousel
-                            carousel(interval="0")
-                                slide(ng-repeat="image in hotelImages")
-                                    img(ng-src="{{image.url}}")
     .col-md-12.col-container
         .card.col-xs-12
             .card-heading.col-md-12
@@ -39,24 +48,28 @@
             .card-body.col-md-12
                 p(ng-bind-html="propertyDescription | unsafe")
     .col-md-12.col-container
-        .card.col-xs-12
-            .card-heading.col-md-12
-                h2 Check-in instructions
-            .card-body.col-md-12
-                p(ng-bind-html="checkInInstructions | unsafe")
-    .col-md-12.col-container
         .card.col-xs-12(ng-show="amenitiesDescription !== null && amenitiesDescription.length > 0")
             .card-heading.col-md-12
-                h2 Amenities
+                h2 Know Before You Go
             .card-body.col-md-12
-                p(ng-bind-html="amenitiesDescription | unsafe")
+                p(ng-bind-html="knowBeforeYouGo | unsafe")
+                p(ng-bind-html="checkInInstructions| unsafe")
+                p(ng-bind-html="hotelPolicy| unsafe")
+                p(ng-bind-html="propertInformation| unsafe")
     .col-md-12.col-container
         .card.col-xs-12(ng-show="areaInfo !== null && areaInfo.length > 0")
             .card-heading.col-md-12
                 h2 Area Information
             .card-body.col-md-12
                 p(ng-bind-html="areaInfo | unsafe")
-.col-md-4.col-container.rooms-col
+    .col-md-12.col-container
+        .card.col-xs-12(ng-show="propertyAmenities.length > 0")
+            .card-heading.col-md-12
+                h2 Property Amenities
+            .card-body.col-md-12
+                .property-amenity.col-md-6(ng-repeat="amenity in propertyAmenities track by $index")
+                    p {{amenity.amenity}}
+.col-md-4.col-container.rooms-col(ng-show="rooms.length>0")
     .col-md-12.col-container
         .card.primal.col-xs-12(ng-repeat="room in rooms track by $index", ng-show="$index < 5")
             .card-heading.col-md-12.col-sm-12.col-xs-12
