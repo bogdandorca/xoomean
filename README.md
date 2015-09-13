@@ -1,5 +1,11 @@
 # Xoomean
 
+## About
+
+First NodeJS project.
+
+https://xoomean.herokuapp.com/
+
 ## API
 
 The API service can be accesses using the **/api/** route.
